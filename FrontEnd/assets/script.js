@@ -37,4 +37,4 @@ let filtres = document.querySelectorAll(".filtres button ");
 for (let filtre of filtres){
   filtre.addEventListener("click",function())
 }
-
+console.log( "coucou")
