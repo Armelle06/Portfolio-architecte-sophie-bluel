@@ -125,6 +125,49 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+#portfolio .filtres {
+	width: auto;
+	margin:50px;
+	display: flex;
+	justify-content: center;
+	
+}
+button{
+	width:auto;
+    height:50px;
+	font-family: 'Syne';
+    font-weight: 700;
+	font-size: 18px;
+	color:#1D6154 ;
+	background-color: white;
+	margin: 8px;
+	padding-right: 20px;
+	padding-left: 20px; 
+    text-align: center;
+    border-radius: 70px;
+	border: 2px solid #1D6154;	
+}
+button:hover{
+	background-color: #1D6154;
+	color:white;
+
+}
+/*
+}
+	/*
+#portofilio .filtres input {
+	width: 180px;
+	height: 48px;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+*/
 .gallery {
 	width: 100%;
 	display: grid;
