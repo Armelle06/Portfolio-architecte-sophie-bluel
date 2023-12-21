@@ -1,40 +1,32 @@
-//creation const des travaux recupere sur API  then interperta en json et then pour interpreter la promise du 1ERE then
-const works = fetch("http://localhost:5678/api/works")
-  .then((reponse) => reponse.json())
-  .then((works) => affichageWorks(works));
-
-//recuperation de l element du dom qui accueillera les images
 const galleryElement = document.querySelector(".gallery");
 
-// function qui genere l'affichage des works dans galerie
-function affichageWorks(works) {
-  for (let i = 0; i < works.length; i++) {
-    // création de la balise <figure> et déclaration de l'enfant
-    let figureElement = document.createElement("figure");
-    figureElement.dataset.class = works[i].category.name;
-    galleryElement.appendChild(figureElement);
+//affichage projet
+function afficheWork(work, divWork) {
+  const figure = document.createElement("figure");
+  const imageWork = document.createElement("img");
+  const figcaption = document.createElement("figcaption");
 
-    // création de la balise <img> ,récuperation et déclaration de l'enfant
-    let imageElement = document.createElement("img");
-    imageElement.src = works[i].imageUrl;
-    imageElement.alt = works[i].title;
-    figureElement.appendChild(imageElement);
+  imageWork.src = work.imageUrl;
+  figcaption.innerHTML = work.title;
 
-    // creation de la balise <figcaption> ,récuperation et déclaration de l'enfant
-    let figcaption = document.createElement("figcaption");
-    figcaption.innerHTML = works[i].title;
-    figureElement.appendChild(figcaption);
-
-    //let alt = createElement("alt");
-    //figcaption.innerHTML = works[i].title;
-  }
+  figure.appendChild(imageWork);
+  figure.appendChild(figcaption);
+  divWork.appendChild(figure);
 }
-console.log("tt est bon");
+console.log("affichage de projet");
 
-//chercher tous les filtres
-let filtres = document.querySelectorAll(".filtres button ");
-//filtres.addEventListener("click", function () {
-for (let filtre of filtres){
-  filtre.addEventListener("click",function())
+//récupérer les travaux
+function fetchWorks(divWork) {
+  fetch("http://localhost:5678/api/works")
+    .then((reponse) => reponse.json())
+    .then((works) => {
+      Works = works;
+      for (let i = 0; i < works.length; i++) {
+        afficheWork(works[i], divWork);
+      }
+    });
 }
-console.log( "coucou")
+console.log("fetchWorks ok");
+
+//affichage gallery
+fetchWorks(galleryElement);
