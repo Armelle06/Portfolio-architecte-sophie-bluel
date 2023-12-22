@@ -22,6 +22,9 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	text-decoration: none;
+	
+	
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -88,7 +91,6 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
@@ -152,22 +154,6 @@ li:hover {
 	color:white;
 
 }
-/*
-}
-	/*
-#portofilio .filtres input {
-	width: 180px;
-	height: 48px;
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-}
-*/
 .gallery {
 	width: 100%;
 	display: grid;
@@ -175,14 +161,13 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 .gallery img {
 	width: 100%;
 
 }
 #contact {
 	width: 50%;
-margin: auto;
+    margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -207,6 +192,7 @@ margin: auto;
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -228,4 +214,52 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+/****** login***/
+#login {
+	width: 50%;
+	height: 700px;
+	margin: auto;
+}
 
+#login h2{
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+#login form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+} 
+#errorLog {
+	height:50px;
+	padding-top: 47px;
+	align-items: center;
+	justify-content: center;
+	color: #B1663C;
+	font-size: 16px;
+	font-weight: 800;
+	display: none;
+}
+
+#login input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#login label {
+	margin: 2em 0 1em 0;
+}
+#login p {
+	text-decoration: underline;
+	text-align: center;
+}
+#footer-login {
+	position: fixed;
+	bottom: 0; /* on le colle en bas */
+	left: 0;
+	width: 100%;
+  }
