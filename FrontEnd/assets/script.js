@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     imageWork.src = work.imageUrl;
     figcaption.innerHTML = work.title;
-
     figure.appendChild(imageWork);
     figure.appendChild(figcaption);
     divWork.appendChild(figure);
@@ -71,6 +70,37 @@ document.addEventListener("DOMContentLoaded", function () {
       if (listeDeWorks[i].categoryId === categoryId || categoryId === 0) {
         afficheWork(listeDeWorks[i], galleryElement);
       }
+    }
+  }
+  //MODIFICATION LOGIN EN LOGOUT SI NECESSAIRE
+  gestionLogin();
+
+  //modif login en logout
+  function gestionLogin() {
+    if (sessionStorage.getItem("token")) {
+      //CHANGER LE MOT LOGIN EN LOGOUT
+      let loginLogout = document.getElementById("loginLogout");
+      loginLogout.textContent = "logout";
+      //apparition de la bande noire
+      let edition = document.getElementById("edition");
+      edition.style.display = "flex";
+      //POUR FAIRE APPARAITRE LA MODIFICATION DES PROJETS
+      let modifProjet = document.getElementById("modifProjet");
+      modifProjet.style.display = "inline";
+      //POUR CACHER LES FILTRES EN MODE EDITION
+      let filterElement = document.querySelector(".filtres");
+      filterElement.style.visibility = "hidden";
+      //peux etre changer en visibility hidden ou visible
+      // DÉCONNEXION LORS DU CLIQUE SUR LOGOUT
+      loginLogout.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // SUPPRESSION DU TOKEN DU SESSION STORAGE
+        sessionStorage.removeItem("token");
+
+        // REDIRECTION VERS LA PAGE D'ACCUEIL
+        window.location.href = "index.html";
+      });
     }
   }
 });

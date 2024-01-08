@@ -23,7 +23,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 	text-decoration: none;
-	
+	color :black
 	
 }
 /* HTML5 display-role reset for older browsers */
@@ -55,6 +55,29 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+.bandeNoire {
+	display:flex;
+	justify-content: center;
+    align-items: center ;
+	height:60px;
+    background-color: black;
+	color:white;
+	width: 100%;
+	/*position: fixed;*/
+	top: 0;
+	left: 0;
+	margin-bottom: 38px;
+}
+.bandeNoire .fa-regular {
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	margin-right: 11px;
+}
+#edition{
+	display: none;
 }
 header {
 	display: flex;
@@ -123,6 +146,161 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+/*modal*/
+aside #modal1{
+	display:none
+}
+#modal1 {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modalWrapper     {
+	display: flex;
+    justify-content:start;
+	width: 633px;
+	height: 700px;
+	border-radius: 10px;
+	background-color: white;
+	flex-direction: column;
+	margin-right:430px;
+	margin-left: 430px;
+	margin-top: 20px;
+	align-items: center;
+}
+.titre {
+    width: 100%;
+    height: 70px;
+	background-color: white;
+}
+/*
+.js-modal-close-new {
+	background-color: white;
+	border: none;
+	margin-top: 26px;
+	margin-right: 30px;
+	position: absolute;
+	cursor: pointer;
+	font-size: 18px;
+}
+*/
+.croix{
+	width:633px;
+	display: flex;
+	justify-content: flex-end;
+	border-radius:10px ;
+	background-color: white;
+}
+
+.js-modal-croix {
+	background-color: white;
+	border: none;
+	margin-top: 26px;
+	margin-right: 30px;
+	cursor: pointer;
+	font-size: 18px;
+}
+/**
+.js-modal-close-new {
+	position:relative;
+}
+*/
+.modalWrapper h3 {
+	position: absolute;
+	height: 30px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	font-size: 26px;
+	width: 630px;
+	background-color: white;
+}
+/**
+.modal-wrapper-new h3{
+	justify-content: center;
+	font-size: 26px;
+	width: 630px;
+	display: flex;
+	margin-top: 10px;
+	background-color: white;
+}
+*/
+.modalGallery {
+	padding: 1px 99px 36px 105px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	column-gap: 9px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.modalGallery figure {
+	position: relative;
+	Width: 78.63px;
+	Height: 139.87px;
+	background-color: white;
+}
+.modalGallery img{
+	width: 76.61px;
+	height: 102.57px;
+	margin-top: 35px;
+}
+
+.modalGallery figcaption{
+	display:none;
+}
+
+.fa-trash-can {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 9px;
+	color: white;
+	width: 17px;
+	height: 17px;
+	background-color: black;
+	border-radius: 2px;
+	position: relative;
+	bottom: 98px;
+	left: 54.14px;
+	cursor: pointer;
+}
+
+.traitDeSeparation {
+	display: flex;
+	justify-content: center;
+	background-color: #b3b3b3;
+	height: 1px;
+	width: 350px;
+	
+}
+#ajouterUnProjet {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top:35px;
+
+	background: #1D6154;
+	border-radius: 60px;
+	color: white;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 14px;
+	border: none;
+	width: 237px;
+	height: 36px;
+	cursor: pointer;
+	text-decoration: none;
+	
+}
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
@@ -134,6 +312,17 @@ li:hover {
 	justify-content: center;
 	
 }
+#modifProjet{
+	display: none;
+    font-size: 15px;
+	padding-left: 10px;
+
+
+}
+.fa-regular {
+	padding-right: 10px;
+}
+
 .button{
 	width:auto;
     height:50px;
@@ -232,15 +421,16 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 } 
-#errorLog {
-	height:50px;
+
+#errorLog {	
 	padding-top: 47px;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	color: #B1663C;
 	font-size: 16px;
 	font-weight: 800;
-	display: none;
+	
 }
 
 #login input {
@@ -253,7 +443,7 @@ footer nav ul {
 #login label {
 	margin: 2em 0 1em 0;
 }
-#login p {
+#login a {
 	text-decoration: underline;
 	text-align: center;
 }
