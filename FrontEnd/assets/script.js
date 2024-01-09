@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterElement = document.querySelector(".filtres");
 
   //affichage projet
-  function afficheWork(work, divWork) {
+  function afficheWork(work, divWork, deleteButton) {
     const figure = document.createElement("figure");
     const imageWork = document.createElement("img");
     const figcaption = document.createElement("figcaption");
@@ -13,24 +13,27 @@ document.addEventListener("DOMContentLoaded", function () {
     figure.appendChild(imageWork);
     figure.appendChild(figcaption);
     divWork.appendChild(figure);
+    if (deleteButton) {
+      createPoubelleButton(figure, work);
+    }
   }
   console.log("affichage de projet");
 
   //récupérer les travaux
-  function fetchWorks(divWork) {
+  function fetchWorks(divWork, deleteButton) {
     fetch("http://localhost:5678/api/works")
       .then((reponse) => reponse.json())
       .then((works) => {
         listeDeWorks = works;
         for (let i = 0; i < works.length; i++) {
-          afficheWork(works[i], divWork);
+          afficheWork(works[i], divWork, deleteButton);
         }
       });
   }
   console.log("fetchWorks ok");
 
   //affichage gallery
-  fetchWorks(galleryElement);
+  fetchWorks(galleryElement, false);
 
   //récuperer les catégories et cration category "tous"
   fetch("http://localhost:5678/api/categories")
@@ -65,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //filtrage par categoryid
   function filtrageCategory(categoryId) {
     galleryElement.innerHTML = "";
+
     //juste les category
     for (let i = 0; i < listeDeWorks.length; i++) {
       if (listeDeWorks[i].categoryId === categoryId || categoryId === 0) {
@@ -72,6 +76,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+
+  //création poubelle pour chaque image
+  function createPoubelleButton(figure, work) {
+    let button = document.createElement("i");
+    button.classList.add("fa-regular", "fa-trash-can");
+    button.addEventListener("click", effaceWork);
+    button.id = work.id;
+    figure.appendChild(button);
+  }
+
   //MODIFICATION LOGIN EN LOGOUT SI NECESSAIRE
   gestionLogin();
 

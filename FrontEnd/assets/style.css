@@ -263,7 +263,7 @@ aside #modal1{
 	align-items: center;
 	font-size: 9px;
 	color: white;
-	width: 17px;
+	width: 14px;
 	height: 17px;
 	background-color: black;
 	border-radius: 2px;
@@ -320,7 +320,7 @@ aside #modal1{
 
 }
 .fa-regular {
-	padding-right: 10px;
+	padding-right: 0px;
 }
 
 .button{
