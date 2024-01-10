@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/script.js" defer></script>
 	<script src="./assets/modalGallery.js" defer></script>
+	<script src="./assets/modalAjoutPhoto.js" defer></script>
+	
 </head>
 <body>
 	<section id="edition" class="bandeNoire"><i class="fa-regular fa-pen-to-square"></i>Mode édition</section>
@@ -42,8 +44,8 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets <a href="#modal1"  class="js-modal" id="modifProjet"  ><i class="fa-regular fa-pen-to-square"></i>modifier</a></h2>
-            <aside id="modal1"  style="display:none;" aria-hidden="true">
-				<div class="modalWrapper" style="display:none;">
+            <aside id="modal1"  style="display:flex;" aria-hidden="true">
+				<div class="modalWrapper" style="display:flex;">
 					<div class="croix">
 					<button class="js-modal-croix"><i class="fa-solid fa-x"></i></button>
 					</div>
@@ -52,6 +54,35 @@
   				    <div class="traitDeSeparation"></div>
 			        <a href="#modal2" class=js-modal id="ajouterUnProjet" >Ajouter une photo</a>
 			</div>
+			</aside>
+			<aside id="modal2" style="display:none;">
+				<div class="modalWrapper2" style="display:none;">
+					<div class="fleche_croix">
+						<div><button class="fleche_gauche"><i class="fa-solid fa-arrow-left"></i></button></div>
+						<div><button class="croix2"><i class="fa-solid fa-x"></i></button></div>
+					</div>
+					<div class="titre2"><h3>Ajout photo</h3></div>
+					<div class="form">
+						<div class="ajoutCarreBleu"> 
+							<div class="imageSelect">
+								<i id="no-picture-preview" class="fa-regular fa-image"></i>
+								<input accept="image/*" type='file' id="input-picture" style="display:none" />
+								<button class="buttonAjoutProjet2">+ Ajouter photo</button>
+								<div class="jpg">jpg, png : 4mo max</div>
+							</div>
+							<img id="picture-preview" name="picture-preview" src="#" alt="your image" />
+						</div>
+						<div class="formModal2">
+							<label for="titre">Titre</label>
+							<input name="titre" class="input-titre" type="text"/>
+							<label for="categorie">Catégorie</label>
+							<select name="categorie" class="selectCategory" type="text"></select>
+							<div id="separation2"></div>
+							<button class="button-submit">Valider</button>
+						</div>
+					</div>
+				</div>
+				
 			</aside>
 			
 		<div class="filtres" id="filtres" ></div>
