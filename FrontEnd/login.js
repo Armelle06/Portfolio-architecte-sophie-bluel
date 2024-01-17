@@ -30,7 +30,7 @@ function userLogin() {
       } else {
         //message d erreur display
         let errorLog = document.getElementById("errorLog");
-        errorLog.innerHTML = "Email ou mot de passe ne sont pas correctes";
+        errorLog.innerHTML = "Erreur dans l'identifiant ou le mot de passe ";
         errorLog.style.display = "block";
         // throw new Error("Erreur de connexion"); // Ajout de cette ligne pour arrêter le traitement en cas d'erreur
       }
