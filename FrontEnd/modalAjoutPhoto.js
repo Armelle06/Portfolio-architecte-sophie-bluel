@@ -1,14 +1,16 @@
-//CONSTANTES
+//constantes , selection des elements HTML
+
 //const NEW_MODALE = document.querySelector(".ajoutCarreBleu");
 const croix2 = document.querySelector(".croix2");
 const flecheGauche = document.querySelector(".fleche_gauche");
 const buttonAjoutProjet2 = document.querySelector(".buttonAjoutProjet2");
 const ajoutPhotoPng = document.querySelector("#ajoutPhotoPng");
-const PicturePreview = document.querySelector("#picture-preview");
+const PicturePreview = document.querySelector("#picturePreview");
 const imageSelect = document.querySelector(".imageSelect");
 const selectCategory = document.querySelector(".selectCategory");
 const titreModal2 = document.querySelector(".input-titre");
-const ButtonValider = document.querySelector(".button-submit");
+const buttonValider = document.querySelector(".button-submit");
+const ajouterUnProjet = document.querySelector("#ajouterUnProjet");
 
 let modal2 = null;
 
@@ -20,18 +22,20 @@ const openModal2 = function (e) {
   // apparition modal2
   modal2 = document.querySelector("#modal2");
   modal2.style.display = null;
-  modal2.addEventListener("click", CloseModal2);
-  croix2.addEventListener("click", CloseModal2);
+  modal2.addEventListener("click", closeModal2);
+  croix2.addEventListener("click", closeModal2);
   let modalWrapper2 = document.querySelector(".modalWrapper2");
   modalWrapper2.style.display = "flex";
   effacePhotoSelection(); // vide la selection photo
   effaceForm(); // vide le formulaire ajout photo
-  loadCategories();
+  optionCategories();
 };
 
 // fonction CloseModal2
-const CloseModal2 = function (e) {
-  if (modal2 == null) return;
+const closeModal2 = function (e) {
+  console.log("Close Modal 2 function called");
+  if (modal2 == null || e == null || e.target == null) return;
+  //if (modal2 == null) return;
   // la modal disparait QUE si on clique sur modal2 et boutoncroix2
   if (
     e.target != modal2 &&
@@ -39,10 +43,12 @@ const CloseModal2 = function (e) {
     e.target != document.querySelector(".fleche_croix .fa-x")
   )
     return;
+
   e.preventDefault();
+
   modal2.style.display = "none";
-  modal2.removeEventListener("click", CloseModal2);
-  croix2.removeEventListener("click", CloseModal2);
+  modal2.removeEventListener("click", closeModal2);
+  croix2.removeEventListener("click", closeModal2);
 };
 
 //bouton fleche gauche sur modal2 apparition modal
@@ -53,12 +59,13 @@ flecheGauche.addEventListener("click", function () {
 
 // bouton ajouterProjet2  click eventlistener ouverture ajoutPhotoPng
 buttonAjoutProjet2.addEventListener("click", function () {
-  ajoutPhotoPng.click();
+  ajoutPhotoPng.click(); //ouverture fichier "file"
 });
 
 //SELECTEUR FICHIER PHOTO
 ajoutPhotoPng.addEventListener("change", function () {
   if (this.files[0].size > 4194304) {
+    // verifie la taille
     alert("Fichier trop volumineux");
     this.value = "";
   }
@@ -84,7 +91,7 @@ function effaceForm() {
 }
 
 // chargement categories via API
-function loadCategories() {
+function optionCategories() {
   selectCategory.innerHTML = ""; //vider avant Fetch sinon ca s accumule
   let option = document.createElement("option");
   option.value = 0; //categorie vide
@@ -104,12 +111,13 @@ function loadCategories() {
 
 // Upload nouveau work
 const UploadWork = function () {
+  console.log("Upload Work function called");
   let token = sessionStorage.getItem("token");
 
-  const formData = new FormData();
+  const formData = new FormData(); //formData ensemble de valeur regroupé
   formData.append("image", ajoutPhotoPng.files[0]); //ajouter le fichier image au formulaire
   formData.append("title", titreModal2.value); //ajouter le titre
-  formData.append("category", selectCategory.value); //ajouter la categorie
+  formData.append("category", selectCategory.value); //ajouter la category
 
   fetch("http://localhost:5678/api/works", {
     method: "POST",
@@ -131,9 +139,11 @@ const UploadWork = function () {
       response.json().then((data) => {
         alert("Formulaire correctement envoyé");
         console.log("Réponse de l'API :", data);
+        // fermer la modal2
+        modal2.style.display = "none";
+        // Ouvrir la modal
+        modal.style.display = "flex";
       });
-
-      VerifForm();
     } else if (response.status === 401) {
       alert("Session expirée ou invalide");
     } else {
@@ -143,30 +153,33 @@ const UploadWork = function () {
 };
 
 // vérifie le formulaire
-const VerifForm = function (e) {
+const VerifForm = function () {
+  console.log("Verify Form function called");
   if (
     // si elles ne sont pas vides ou egale à 0
     ajoutPhotoPng.value != "" &&
     selectCategory.value != 0 &&
     titreModal2.value != ""
   ) {
-    // bouton vert ,pointer l ecouteur fonction sur upload
-    ButtonValider.style.backgroundColor = "#1D6154";
-    ButtonValider.style.cursor = "pointer";
-    ButtonValider.addEventListener("click", UploadWork);
+    // bouton vert ,pointer l ecouteur fonction sur uploadWork
+    buttonValider.style.backgroundColor = "#1D6154";
+    buttonValider.style.cursor = "pointer";
+    buttonValider.addEventListener("click", UploadWork);
   } else {
     // sinon bouton gris pas de pointer , ecouteur non fonctionnel
-    ButtonValider.style.backgroundColor = "#A7A7A7";
-    ButtonValider.style.cursor = "default";
-    ButtonValider.removeEventListener("click", UploadWork);
+    buttonValider.style.backgroundColor = "#A7A7A7";
+    buttonValider.style.cursor = "default";
+    buttonValider.removeEventListener("click", UploadWork);
   }
 };
+
 // a chaque fois qu on clicket qu il y a du changement  sur ajoutPhoto, selectCategory et titreModal2
 // verifForm est declanché .
 ajoutPhotoPng.addEventListener("change", VerifForm);
 selectCategory.addEventListener("change", VerifForm);
 titreModal2.addEventListener("change", VerifForm);
 
-document.querySelectorAll("#ajouterUnProjet").forEach((a) => {
-  a.addEventListener("click", openModal2);
-});
+ajouterUnProjet.addEventListener("click", openModal2);
+//document.querySelectorAll("#ajouterUnProjet").forEach((a) => {
+//  a.addEventListener("click", openModal2);
+//});

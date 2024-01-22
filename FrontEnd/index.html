@@ -40,16 +40,16 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets <a href="#modal1"  class="js-modal" id="modifProjet"  ><i class="fa-regular fa-pen-to-square"></i>modifier</a></h2>
-            <aside id="modal1"  style="display:none;" aria-hidden="true">
+		<h2>Mes Projets <a href="#modal1" id="modifProjet"><i class="fa-regular fa-pen-to-square"></i>modifier</a></h2>
+            <aside id="modal1" style="display:none;">
 				<div class="modalWrapper" style="display:none;">
 					<div class="croix">
-					<button class="js-modal-croix"><i class="fa-solid fa-x"></i></button>
+					<button class="boutonCroix"><i class="fa-solid fa-x"></i></button>
 					</div>
 					<div class="titre"><h3>Galerie photo</h3></div>
 					<div class="modalGallery"></div>
   				    <div class="traitDeSeparation"></div>
-			        <a href="#modal2" class=js-modal id="ajouterUnProjet" >Ajouter une photo</a>
+			        <a href="#modal2" id="ajouterUnProjet" >Ajouter une photo</a>
 			</div>
 			</aside>
 			<aside id="modal2" style="display:none;">
@@ -62,12 +62,12 @@
 					<div class="form">
 						<div class="ajoutCarreBleu"> 
 							<div class="imageSelect">
-								<i id="no-picture-preview" class="fa-regular fa-image"></i>
+								<i id="noPicturePreview" class="fa-regular fa-image"></i>
 								<input accept="image/*" type='file' id="ajoutPhotoPng" style="display:none" />
 								<button class="buttonAjoutProjet2">+ Ajouter photo</button>
 								<div class="jpg">jpg, png : 4mo max</div>
 							</div>
-							<img id="picture-preview" name="picture-preview" src="#" alt="your image" />
+							<img id="picturePreview" name="picture-preview" src="#" alt="your image" />
 						</div>
 						<div class="formModal2">
 							<label for="titre">Titre</label>
@@ -79,9 +79,7 @@
 						</div>
 					</div>
 				</div>
-				
 			</aside>
-			
 		<div class="filtres" id="filtres" ></div>
 		<div class="gallery"></div>
 	</section>
@@ -99,7 +97,7 @@
 		</form>
 	</section>
 </main>
-
+<!---->
 <footer>
 	<nav>
 		<ul>

@@ -136,6 +136,9 @@ body {
   font-family: "Work Sans";
   font-size: 14px;
 }
+
+/* bande noire ,Mode édition*/
+
 .bandeNoire {
   display: flex;
   justify-content: center;
@@ -159,6 +162,7 @@ body {
 #edition {
   display: none;
 }
+
 header {
   display: flex;
   justify-content: space-between;
@@ -225,7 +229,7 @@ li:hover {
 #introduction p {
   margin-bottom: 0.5em;
 }
-/*modal*/
+/* ---- modal --- */
 aside #modal1 {
   display: none;
 }
@@ -255,36 +259,6 @@ aside #modal1 {
   margin-top: 20px;
   align-items: center;
 }
-.modalWrapper2 {
-  display: flex;
-  justify-content: start;
-  width: 633px;
-  height: 680px;
-  border-radius: 10px;
-  background-color: white;
-  flex-direction: column;
-  margin-right: 430px;
-  margin-left: 430px;
-  margin-top: 20px;
-  align-items: center;
-}
-
-.titre {
-  width: 100%;
-  height: 70px;
-  background-color: white;
-}
-/*
-.js-modal-close-new {
-	background-color: white;
-	border: none;
-	margin-top: 26px;
-	margin-right: 30px;
-	position: absolute;
-	cursor: pointer;
-	font-size: 18px;
-}
-*/
 .croix {
   width: 633px;
   display: flex;
@@ -292,8 +266,7 @@ aside #modal1 {
   border-radius: 10px;
   background-color: white;
 }
-
-.js-modal-croix {
+.boutonCroix {
   background-color: white;
   border: none;
   margin-top: 26px;
@@ -301,11 +274,12 @@ aside #modal1 {
   cursor: pointer;
   font-size: 18px;
 }
-/**
-.js-modal-close-new {
-	position:relative;
+
+.titre {
+  width: 100%;
+  height: 70px;
+  background-color: white;
 }
-*/
 .modalWrapper h3 {
   position: absolute;
   height: 30px;
@@ -316,16 +290,6 @@ aside #modal1 {
   width: 630px;
   background-color: white;
 }
-/**
-.modal-wrapper-new h3{
-	justify-content: center;
-	font-size: 26px;
-	width: 630px;
-	display: flex;
-	margin-top: 10px;
-	background-color: white;
-}
-*/
 .modalGallery {
   padding: 1px 99px 36px 105px;
   display: grid;
@@ -334,7 +298,6 @@ aside #modal1 {
   border-radius: 10px;
   background-color: white;
 }
-
 .modalGallery figure {
   position: relative;
   width: 78.63px;
@@ -346,11 +309,11 @@ aside #modal1 {
   height: 102.57px;
   margin-top: 35px;
 }
-
 .modalGallery figcaption {
   display: none;
 }
 
+/*poubelle icone*/
 .fa-trash-can {
   display: flex;
   justify-content: center;
@@ -365,6 +328,7 @@ aside #modal1 {
   bottom: 98px;
   left: 54.14px;
   cursor: pointer;
+  
 }
 
 .traitDeSeparation {
@@ -380,7 +344,6 @@ aside #modal1 {
   justify-content: center;
   align-items: center;
   margin-top: 35px;
-
   background: #1d6154;
   border-radius: 60px;
   color: white;
@@ -393,7 +356,22 @@ aside #modal1 {
   cursor: pointer;
   text-decoration: none;
 }
-/*modal 2**/
+
+/* --- modal2 ---*/
+
+.modalWrapper2 {
+  display: flex;
+  justify-content: start;
+  width: 633px;
+  height: 680px;
+  border-radius: 10px;
+  background-color: white;
+  flex-direction: column;
+  margin-right: 430px;
+  margin-left: 430px;
+  margin-top: 20px;
+  align-items: center;
+}
 .fleche_croix {
   width: 100%;
   height: 30px;
@@ -417,7 +395,6 @@ aside #modal1 {
   padding-right: 20px;
   cursor: pointer;
 }
-
 .modalWrapper2 h3 {
   padding-top: 10px;
   height: 30px;
@@ -426,6 +403,14 @@ aside #modal1 {
   justify-content: center;
   font-size: 26px;
   width: 630px;
+  background-color: white;
+}
+.form {
+  width: 630px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: white;
 }
 .ajoutCarreBleu {
@@ -468,18 +453,32 @@ aside #modal1 {
   margin-top: 10px;
   font-family: "Work Sans";
 }
+
+/*--image source selectionné avant de l'ajouter  -*/
+#picturePreview {
+  display: none;
+  max-width: 129px;
+  max-height: 193px;
+}
 .formModal2 {
   display: flex;
   width: 420px;
   flex-direction: column;
   background-color: white;
 }
-.form {
-  width: 630px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.input-titre {
+  margin-top: 10px;
+  margin-bottom: 21px;
+  height: 51px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  background-color:white;
+}
+.selectCategory {
+  margin-top: 10px;
+  height: 51px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   background-color: white;
 }
 #separation2 {
@@ -489,24 +488,6 @@ aside #modal1 {
   width: 420px;
   margin-top: 47px;
 }
-
-.input-titre {
-  margin-top: 10px;
-  margin-bottom: 21px;
-  height: 51px;
-  border: none;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  background-color: white;
-}
-
-.selectCategory {
-  margin-top: 10px;
-  height: 51px;
-  border: none;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  background-color: white;
-}
-
 .button-submit {
   margin-top: 32px;
   border-radius: 60px;
@@ -520,12 +501,7 @@ aside #modal1 {
   font-size: 14px;
 }
 
-/*--image source selectionné avant de l'ajouter  -*/
-#picture-preview {
-  display: none;
-  max-width: 129px;
-  max-height: 193px;
-}
+/* --- gallery portofolio ---*/
 
 #portfolio h2 {
   text-align: center;
@@ -542,10 +518,13 @@ aside #modal1 {
   font-size: 15px;
   padding-left: 10px;
 }
+#modifProjet .fa-regular{
+  padding-right: 10px;
+}
 .fa-regular {
   padding-right: 0px;
 }
-
+/* --- bouton filtre ---*/
 .button {
   width: auto;
   height: 50px;
@@ -565,6 +544,7 @@ aside #modal1 {
   background-color: #1d6154;
   color: white;
 }
+
 .gallery {
   width: 100%;
   display: grid;
@@ -575,6 +555,7 @@ aside #modal1 {
 .gallery img {
   width: 100%;
 }
+
 #contact {
   width: 50%;
   margin: auto;
@@ -623,25 +604,26 @@ footer nav ul {
   justify-content: flex-end;
   margin: 2em;
 }
-/****** login***/
+/* --- login ---*/
+
 #login {
   width: 50%;
   height: 700px;
   margin: auto;
 }
-
 #login h2 {
   text-align: center;
   margin-bottom: 1em;
 }
-
 #login form {
   text-align: left;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
 }
-
+#login label {
+  margin: 2em 0 1em 0;
+}
 #errorLog {
   padding-top: 47px;
   display: none;
@@ -651,16 +633,11 @@ footer nav ul {
   font-size: 16px;
   font-weight: 800;
 }
-
 #login input {
   height: 50px;
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-#login label {
-  margin: 2em 0 1em 0;
 }
 #login a {
   text-decoration: underline;

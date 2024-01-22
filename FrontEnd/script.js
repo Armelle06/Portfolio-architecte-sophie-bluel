@@ -1,3 +1,4 @@
+//constantes , selection des elements HTML
 const galleryElement = document.querySelector(".gallery");
 const filterElement = document.querySelector(".filtres");
 
@@ -27,6 +28,8 @@ function fetchWorks(divWork, deleteButton) {
     .then((works) => {
       listeDeWorks = works;
       for (let i = 0; i < works.length; i++) {
+        //boucle pour afficher travaux
+        // tant que i, indice est inferieur à la totalité ;i = i + 1.
         afficheWork(works[i], divWork, deleteButton);
       }
     });
@@ -36,39 +39,34 @@ function fetchWorks(divWork, deleteButton) {
 fetch("http://localhost:5678/api/categories")
   .then((reponse) => reponse.json())
   .then((categories) => {
-    let worksFiltre = new Set(categories);
-    let newCategory = { id: 0, name: "tous" };
-    createButton(newCategory); // creation ("tous")
+    let worksFiltre = new Set(categories); //création categorie sans doublons
+    let newCategory = { id: 0, name: "tous" }; //création et appel  ("tous")
+    createButton(newCategory);
     for (let category of worksFiltre) //creation pour les 3 autres categories
       createButton(category);
   });
 
 // créer bouton de filtres
 function createButton(category) {
-  console.log("Création du bouton pour la catégorie :", category);
-  if (filterElement) {
-    let button = document.createElement("button");
-    button.id = "button" + category.id;
-    button.classList.add("button");
-    button.innerHTML = category.name;
-    filterElement.appendChild(button);
+  let button = document.createElement("button");
+  button.id = "button" + category.id;
+  button.classList.add("button");
+  button.innerHTML = category.name;
+  filterElement.appendChild(button);
 
-    //eventlistener sur bouton de filtres
-    button.addEventListener("click", function () {
-      filtrageCategory(category.id);
-    });
-  } else {
-    console.error("L'élément filterElement est null.");
-  }
+  //eventlistener sur bouton de filtres pour trier /ID
+  button.addEventListener("click", function () {
+    filtrageCategory(category.id);
+  });
 }
 
 // filtrage par category.Id
 function filtrageCategory(categoryId) {
   galleryElement.innerHTML = "";
-
-  //juste les category
+  //parcour tous les oeuvres dans listeDeWorks sans doublon
   for (let i = 0; i < listeDeWorks.length; i++) {
     if (listeDeWorks[i].categoryId === categoryId || categoryId === 0) {
+      // si ID est le meme ou 0
       afficheWork(listeDeWorks[i], galleryElement, false);
     }
   }
@@ -78,7 +76,7 @@ function filtrageCategory(categoryId) {
 function createPoubelleButton(figure, work) {
   let button = document.createElement("i");
   button.classList.add("fa-regular", "fa-trash-can");
-  button.addEventListener("click", effaceWork);
+  button.addEventListener("click", effaceWork); //fonction effaceWork sur modalGallery.js
   button.id = work.id;
   figure.appendChild(button);
 }
@@ -89,18 +87,19 @@ gestionLogin();
 // modif login en logout ...
 function gestionLogin() {
   if (sessionStorage.getItem("token")) {
+    // si token dans la sessionStorage
     // changer login en logout
     let loginLogout = document.getElementById("loginLogout");
     loginLogout.textContent = "logout";
-    // pparition de la bande noire
+    // apparition de la bande noire
     let edition = document.getElementById("edition");
     edition.style.display = "flex";
-    // pour faire apparaitre la modification des projets
+    // apparition de la modification des projets
     let modifProjet = document.getElementById("modifProjet");
     modifProjet.style.display = "inline";
     // cache les filtres
     let filterElement = document.querySelector(".filtres");
-    filterElement.style.visibility = "hidden";
+    filterElement.style.visibility = "hidden"; //juste invisible
     // ecouteur pour deconnecter
     loginLogout.addEventListener("click", function (event) {
       event.preventDefault();

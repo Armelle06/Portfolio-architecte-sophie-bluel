@@ -1,5 +1,7 @@
+//constantes , selection des elements HTML
+
 const modalGallery = document.querySelector(".modalGallery");
-const boutonCroix = document.querySelector(".js-modal-croix");
+const boutonCroix = document.querySelector(".boutonCroix");
 const modalWrapper = document.querySelector(".modalWrapper");
 const modifProjet = document.getElementById("modifProjet");
 
@@ -36,9 +38,10 @@ const closeModal = function (e) {
   boutonCroix.removeEventListener("click", closeModal);
 };
 
-// foncion suppression travaux
+// foncion confirmation de suppression travaux
 const effaceWork = function (e) {
   const confirmation = confirm(
+    // boite dialogue pour valider la suppression
     "Êtes-vous sûr de vouloir supprimer ce projet ?"
   );
 
@@ -77,7 +80,6 @@ function effaceWorkFetch(idWork) {
     ) {
       rafraichirWork(modalGallery, true); // rafraichir travaux modal
       rafraichirWork(galleryElement, false); // rafraichir travaux index
-      // window.location.reload(); // Reload the page je ne l ai pas appliqué car il me retirait ma modal
     } else {
       alert("Erreur lors de la suppression du projet.");
     }
