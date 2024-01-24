@@ -1,4 +1,5 @@
 //constante , selection des elements HTML
+//bouton vert login.html
 const btnConnecter = document.getElementById("connecter");
 
 // connection au clic avec addEventlisten
@@ -8,6 +9,7 @@ btnConnecter.addEventListener("click", function (event) {
 });
 
 function userLogin() {
+  //couple d identifiant
   let formUser = {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
@@ -21,7 +23,6 @@ function userLogin() {
     body: JSON.stringify(formUser),
   })
     .then((reponse) => {
-      console.log("Réponse du serveur:", reponse.status);
       if (reponse.status === 200) {
         // Si  LOGIN Ok reponse converti en Json
         return reponse.json();
@@ -42,3 +43,4 @@ function userLogin() {
       }
     });
 }
+// si tt es ok , gestionLogin est appelé script.js L85

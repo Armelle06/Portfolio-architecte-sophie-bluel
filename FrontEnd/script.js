@@ -46,7 +46,7 @@ fetch("http://localhost:5678/api/categories")
       createButton(category);
   });
 
-// créer bouton de filtres
+// créer bouton de filtre en HTML
 function createButton(category) {
   let button = document.createElement("button");
   button.id = "button" + category.id;
@@ -60,10 +60,10 @@ function createButton(category) {
   });
 }
 
-// filtrage par category.Id
+// filtrage par category.Id triage des travaux
 function filtrageCategory(categoryId) {
   galleryElement.innerHTML = "";
-  //parcour tous les oeuvres dans listeDeWorks sans doublon
+  //parcour tous les oeuvres dans listeDeWorks la totalité des travaux
   for (let i = 0; i < listeDeWorks.length; i++) {
     if (listeDeWorks[i].categoryId === categoryId || categoryId === 0) {
       // si ID est le meme ou 0
@@ -72,7 +72,7 @@ function filtrageCategory(categoryId) {
   }
 }
 
-// création poubelle pour chaque image
+// création poubelle pour chaque image pour modal seulement
 function createPoubelleButton(figure, work) {
   let button = document.createElement("i");
   button.classList.add("fa-regular", "fa-trash-can");
@@ -94,13 +94,13 @@ function gestionLogin() {
     // apparition de la bande noire
     let edition = document.getElementById("edition");
     edition.style.display = "flex";
-    // apparition de la modification des projets
+    // apparition de la modification des projets "modifier"
     let modifProjet = document.getElementById("modifProjet");
     modifProjet.style.display = "inline";
     // cache les filtres
     let filterElement = document.querySelector(".filtres");
     filterElement.style.visibility = "hidden"; //juste invisible
-    // ecouteur pour deconnecter
+    // écouteur pour déconnecter
     loginLogout.addEventListener("click", function (event) {
       event.preventDefault();
 

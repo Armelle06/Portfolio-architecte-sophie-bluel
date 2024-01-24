@@ -3,7 +3,7 @@
 const modalGallery = document.querySelector(".modalGallery");
 const boutonCroix = document.querySelector(".boutonCroix");
 const modalWrapper = document.querySelector(".modalWrapper");
-const modifProjet = document.getElementById("modifProjet");
+const modifProjet = document.getElementById("modifProjet"); // bouton 'modifier' en login
 
 let modal = null;
 
@@ -16,7 +16,7 @@ const openModal = function (e) {
   boutonCroix.addEventListener("click", closeModal);
   modalWrapper.style.display = "flex";
   modalGallery.innerHTML = "";
-  fetchWorks(modalGallery, true);
+  fetchWorks(modalGallery, true); // apparition poubelle= true
 };
 
 // appel listener bouton modifProjet pour ouverture modal

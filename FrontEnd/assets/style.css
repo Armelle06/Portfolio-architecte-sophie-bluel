@@ -466,7 +466,7 @@ aside #modal1 {
   flex-direction: column;
   background-color: white;
 }
-.input-titre {
+.titreModal2 {
   margin-top: 10px;
   margin-bottom: 21px;
   height: 51px;
@@ -488,7 +488,7 @@ aside #modal1 {
   width: 420px;
   margin-top: 47px;
 }
-.button-submit {
+.buttonValider{
   margin-top: 32px;
   border-radius: 60px;
   border: none;

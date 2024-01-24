@@ -1,15 +1,13 @@
 //constantes , selection des elements HTML
-
-//const NEW_MODALE = document.querySelector(".ajoutCarreBleu");
 const croix2 = document.querySelector(".croix2");
 const flecheGauche = document.querySelector(".fleche_gauche");
 const buttonAjoutProjet2 = document.querySelector(".buttonAjoutProjet2");
 const ajoutPhotoPng = document.querySelector("#ajoutPhotoPng");
-const PicturePreview = document.querySelector("#picturePreview");
+const picturePreview = document.querySelector("#picturePreview");
 const imageSelect = document.querySelector(".imageSelect");
 const selectCategory = document.querySelector(".selectCategory");
-const titreModal2 = document.querySelector(".input-titre");
-const buttonValider = document.querySelector(".button-submit");
+const titreModal2 = document.querySelector(".titreModal2");
+const buttonValider = document.querySelector(".buttonValider");
 const ajouterUnProjet = document.querySelector("#ajouterUnProjet");
 
 let modal2 = null;
@@ -17,7 +15,7 @@ let modal2 = null;
 // fonction OpenModal2
 const openModal2 = function (e) {
   e.preventDefault();
-  // modif l apparance de la 1 ere modal
+  // modifie l apparance de la 1 ere modal
   modal.style.display = "none";
   // apparition modal2
   modal2 = document.querySelector("#modal2");
@@ -62,7 +60,7 @@ buttonAjoutProjet2.addEventListener("click", function () {
   ajoutPhotoPng.click(); //ouverture fichier "file"
 });
 
-//SELECTEUR FICHIER PHOTO
+//selecteur de taille pour photo png
 ajoutPhotoPng.addEventListener("change", function () {
   if (this.files[0].size > 4194304) {
     // verifie la taille
@@ -70,8 +68,8 @@ ajoutPhotoPng.addEventListener("change", function () {
     this.value = "";
   }
   if (this.files[0]) {
-    PicturePreview.src = URL.createObjectURL(this.files[0]);
-    PicturePreview.style.display = "block";
+    picturePreview.src = URL.createObjectURL(this.files[0]);
+    picturePreview.style.display = "block";
     imageSelect.style.display = "none";
   }
 });
@@ -79,8 +77,8 @@ ajoutPhotoPng.addEventListener("change", function () {
 // remise a zero de l image selectionneé, page d origine vide avec icone
 function effacePhotoSelection() {
   ajoutPhotoPng.value = "";
-  PicturePreview.src = "";
-  PicturePreview.style.display = "none";
+  picturePreview.src = "";
+  picturePreview.style.display = "none";
   imageSelect.style.display = "block";
 }
 
@@ -111,11 +109,11 @@ function optionCategories() {
 
 // Upload nouveau work
 const UploadWork = function () {
-  console.log("Upload Work function called");
+  //stokage token
   let token = sessionStorage.getItem("token");
 
   const formData = new FormData(); //formData ensemble de valeur regroupé
-  formData.append("image", ajoutPhotoPng.files[0]); //ajouter le fichier image au formulaire
+  formData.append("image", ajoutPhotoPng.files[0]); //ajouter sur HTML le fichier image au formulaire
   formData.append("title", titreModal2.value); //ajouter le titre
   formData.append("category", selectCategory.value); //ajouter la category
 
@@ -154,32 +152,28 @@ const UploadWork = function () {
 
 // vérifie le formulaire
 const VerifForm = function () {
-  console.log("Verify Form function called");
   if (
     // si elles ne sont pas vides ou egale à 0
     ajoutPhotoPng.value != "" &&
-    selectCategory.value != 0 &&
-    titreModal2.value != ""
+    titreModal2.value != "" &&
+    selectCategory.value != 0
   ) {
     // bouton vert ,pointer l ecouteur fonction sur uploadWork
     buttonValider.style.backgroundColor = "#1D6154";
     buttonValider.style.cursor = "pointer";
     buttonValider.addEventListener("click", UploadWork);
   } else {
-    // sinon bouton gris pas de pointer , ecouteur non fonctionnel
+    // sinon bouton gris pas de pointer , écouteur non fonctionnel
     buttonValider.style.backgroundColor = "#A7A7A7";
     buttonValider.style.cursor = "default";
     buttonValider.removeEventListener("click", UploadWork);
   }
 };
 
-// a chaque fois qu on clicket qu il y a du changement  sur ajoutPhoto, selectCategory et titreModal2
+// chaque fois qu'on click et qu'il y a du changement  sur ajoutPhotoPng, selectCategory et titreModal2
 // verifForm est declanché .
 ajoutPhotoPng.addEventListener("change", VerifForm);
-selectCategory.addEventListener("change", VerifForm);
 titreModal2.addEventListener("change", VerifForm);
+selectCategory.addEventListener("change", VerifForm);
 
 ajouterUnProjet.addEventListener("click", openModal2);
-//document.querySelectorAll("#ajouterUnProjet").forEach((a) => {
-//  a.addEventListener("click", openModal2);
-//});
