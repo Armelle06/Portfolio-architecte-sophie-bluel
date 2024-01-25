@@ -2,10 +2,10 @@
 const galleryElement = document.querySelector(".gallery");
 const filterElement = document.querySelector(".filtres");
 
-//affichage gallery, sans poubelle "false"
+// affichage gallery, sans poubelle "false"
 fetchWorks(galleryElement, false);
 
-//affichage projet et creation en html divwork/figure/imageWork/figcaption
+// affichage projet et création en HTML divwork/figure/imageWork/figcaption
 function afficheWork(work, divWork, deleteButton) {
   const figure = document.createElement("figure");
   const imageWork = document.createElement("img");
@@ -35,7 +35,7 @@ function fetchWorks(divWork, deleteButton) {
     });
 }
 
-// récuperer les catégories et creation category "tous"
+// récuperer les catégories et création category "tous"
 fetch("http://localhost:5678/api/categories")
   .then((reponse) => reponse.json())
   .then((categories) => {
@@ -54,7 +54,7 @@ function createButton(category) {
   button.innerHTML = category.name;
   filterElement.appendChild(button);
 
-  //eventlistener sur bouton de filtres pour trier /ID
+  // écouteur sur bouton filtre pour appeler filtrageCategory
   button.addEventListener("click", function () {
     filtrageCategory(category.id);
   });
@@ -63,7 +63,7 @@ function createButton(category) {
 // filtrage par category.Id triage des travaux
 function filtrageCategory(categoryId) {
   galleryElement.innerHTML = "";
-  //parcour tous les oeuvres dans listeDeWorks la totalité des travaux
+  // parcour tous les oeuvres dans listeDeWorks la totalité des travaux
   for (let i = 0; i < listeDeWorks.length; i++) {
     if (listeDeWorks[i].categoryId === categoryId || categoryId === 0) {
       // si ID est le meme ou 0

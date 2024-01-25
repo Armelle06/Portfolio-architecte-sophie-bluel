@@ -180,13 +180,11 @@ h1 {
   font-weight: 800;
   color: #b1663c;
 }
-
 h1 > span {
   font-family: "Work Sans";
   font-size: 10px;
   letter-spacing: 0.1em;
 }
-
 h2 {
   font-family: "Syne";
   font-weight: 700;
@@ -202,7 +200,6 @@ nav li {
   padding: 0 10px;
   font-size: 1.2em;
 }
-
 li:hover {
   color: #b1663c;
 }
@@ -217,9 +214,7 @@ li:hover {
   display: block;
   margin: auto;
   width: 80%;
-}
-
-#introduction article {
+}#introduction article {
   flex: 1;
 }
 #introduction h2 {
@@ -229,7 +224,9 @@ li:hover {
 #introduction p {
   margin-bottom: 0.5em;
 }
+
 /* ---- modal --- */
+
 aside #modal1 {
   display: none;
 }
@@ -245,7 +242,6 @@ aside #modal1 {
   align-items: center;
   justify-content: center;
 }
-
 .modalWrapper {
   display: flex;
   justify-content: start;
@@ -274,7 +270,6 @@ aside #modal1 {
   cursor: pointer;
   font-size: 18px;
 }
-
 .titre {
   width: 100%;
   height: 70px;
@@ -328,9 +323,7 @@ aside #modal1 {
   bottom: 98px;
   left: 54.14px;
   cursor: pointer;
-  
 }
-
 .traitDeSeparation {
   display: flex;
   justify-content: center;
@@ -338,7 +331,6 @@ aside #modal1 {
   height: 1px;
   width: 350px;
 }
-
 #ajouterUnProjet {
   display: flex;
   justify-content: center;
@@ -544,7 +536,6 @@ aside #modal1 {
   background-color: #1d6154;
   color: white;
 }
-
 .gallery {
   width: 100%;
   display: grid;
@@ -555,7 +546,6 @@ aside #modal1 {
 .gallery img {
   width: 100%;
 }
-
 #contact {
   width: 50%;
   margin: auto;
@@ -572,7 +562,6 @@ aside #modal1 {
   display: flex;
   flex-direction: column;
 }
-
 #contact input {
   height: 50px;
   font-size: 1.2em;
@@ -582,12 +571,10 @@ aside #modal1 {
 #contact label {
   margin: 2em 0 1em 0;
 }
-
 #contact textarea {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 input[type="submit"] {
   font-family: "Syne";
   font-weight: 700;
@@ -598,12 +585,12 @@ input[type="submit"] {
   text-align: center;
   border-radius: 60px;
 }
-
 footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
 }
+
 /* --- login ---*/
 
 #login {

@@ -1,9 +1,8 @@
 //constantes , selection des elements HTML
-
 const modalGallery = document.querySelector(".modalGallery");
 const boutonCroix = document.querySelector(".boutonCroix");
 const modalWrapper = document.querySelector(".modalWrapper");
-const modifProjet = document.getElementById("modifProjet"); // bouton 'modifier' en login
+const modifProjet = document.getElementById("modifProjet"); // bouton "modifier" sur HTML index
 
 let modal = null;
 
@@ -16,10 +15,10 @@ const openModal = function (e) {
   boutonCroix.addEventListener("click", closeModal);
   modalWrapper.style.display = "flex";
   modalGallery.innerHTML = "";
-  fetchWorks(modalGallery, true); // apparition poubelle= true
+  fetchWorks(modalGallery, true); // apparition poubelle = true
 };
 
-// appel listener bouton modifProjet pour ouverture modal
+// écouteur sur bouton modifProjet pour ouverture modal
 modifProjet.addEventListener("click", openModal);
 
 // fonction fermeture modal
@@ -38,19 +37,12 @@ const closeModal = function (e) {
   boutonCroix.removeEventListener("click", closeModal);
 };
 
-// foncion confirmation de suppression travaux
+// foncion suppression travaux
 const effaceWork = function (e) {
-  const confirmation = confirm(
-    // boite dialogue pour valider la suppression
-    "Êtes-vous sûr de vouloir supprimer ce projet ?"
-  );
-
-  if (confirmation) {
-    try {
-      effaceWorkFetch(e.target.id);
-    } catch (error) {
-      console.error("Erreur lors de la suppression du projet:", error);
-    }
+  try {
+    effaceWorkFetch(e.target.id);
+  } catch (error) {
+    console.error("Erreur lors de la suppression du projet:", error);
   }
 };
 
@@ -60,7 +52,7 @@ function rafraichirWork(divWork, deleteButton) {
   fetchWorks(divWork, deleteButton);
 }
 
-// appel API pour delete travaux et appel rafraichir galery et modal
+// appel API Delete travaux et appel rafraichir galery et modal
 function effaceWorkFetch(idWork) {
   // récupération du token d'authentification depuis le sessionStorage
   let token = sessionStorage.getItem("token");
